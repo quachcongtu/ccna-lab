@@ -12,12 +12,15 @@
 ```
 Switch>en
 Switch#conf t
+
 Switch(config)#vlan 10
 Switch(config-vlan)#name vlan10
 Switch(config-vlan)#ex
+
 Switch(config)#vlan 20
 Switch(config-vlan)#name vlan20
 Switch(config-vlan)#ex
+
 Switch(config)#vlan 99
 Switch(config-vlan)#name vlan99
 Switch(config-vlan)#ex
@@ -26,10 +29,12 @@ Switch(config)#int range gi1/0/15-22
 Switch(config-if-range)#switchport mode access 
 Switch(config-if-range)#switchport access vlan 10
 Switch(config-if-range)#ex
+
 Switch(config)#int range gi1/0/7-14
 Switch(config-if-range)#switchport mode access 
 Switch(config-if-range)#switchport access vlan 20
 Switch(config-if-range)#ex
+
 Switch(config)#int range gi1/0/2-6
 Switch(config-if-range)#switchport mode access 
 Switch(config-if-range)#switchport access vlan 99
@@ -63,6 +68,7 @@ Switch(config)#ip routing
 ```
 Router>en
 Router#conf t
+
 Router(config)#int fa0/1.10
 Router(config-subif)#encapsulation dot1Q 10
 Router(config-subif)#ip address 10.0.10.254 255.255.255.0
@@ -74,7 +80,6 @@ Router(config-subif)#ip address 10.0.20.254 255.255.255.0
 Router(config-subif)#ex
 
 Router(config)#int fa0/1.99
-Router(config-subif)#en
 Router(config-subif)#encapsulation dot1Q 99
 Router(config-subif)#ip address 10.0.99.254 255.255.255.0
 Router(config-subif)#ex
@@ -104,6 +109,7 @@ Router(config-if)#ex
 ```
 Router>en
 Router#conf t
+
 Router(config)#int fa0/0
 Router(config-if)#ip address 203.0.113.1 255.255.255.0
 Router(config-if)#no shutdown 
@@ -119,9 +125,9 @@ Router(config)#ip route 10.0.0.0 255.255.0.0 203.0.113.2
 
 4.Chặn vlan 99 ping đến các vlan khác:
 ```
-Switch>
 Switch>en
 Switch#conf t
+
 Switch(config)#ip access-list extended BLOCK_VLAN99
 Switch(config-ext-nacl)#deny ip 10.0.99.0 0.0.0.255 10.0.20.0 0.0.0.255
 Switch(config-ext-nacl)#deny ip 10.0.99.0 0.0.0.255 10.0.10.0 0.0.0.255
