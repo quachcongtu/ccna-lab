@@ -60,8 +60,8 @@ Switch(config-if)#switchport mode trunk
 Switch(config-if)#switchport trunk allowed vlan 10,20,99
 Switch(config-if)#ex
 
-Switch(config)#ip route 0.0.0.0 0.0.0.0 10.0.99.254 (ip mặc định ra router)
-Switch(config)#ip routing
+Switch(config)#ip route 0.0.0.0 0.0.0.0 10.0.99.254
+Switch(config)#ip routing (bật tính năng định tuyến trên sw layer 3)
 ```
 
 2.Cấu hình Router:
